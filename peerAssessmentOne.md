@@ -326,3 +326,5 @@ ggplot(stepsPerDayType, aes(IntervalSeconds,Steps)) +
 
 ![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11.png) 
 
+That completes the analysis for this assessment.
+

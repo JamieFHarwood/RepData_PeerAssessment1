@@ -78,6 +78,7 @@ maxSteps <- stepsPerDayFive[stepsPerDayFive$Steps == max(stepsPerDayFive$Steps),
 
 #calculate missing values
 missingValues <- format(sum(is.na(activity$steps)), big.mark = ',')
+
 ````
 
 
@@ -136,6 +137,7 @@ activityAdjusted$AdjustedSteps <- mapply(FUN=function(x,y ){
 We can now plot the adjusted data to compare to our histogram for the original data
 
 ````{r}
+
 stepsPerDayAdjusted <- aggregate(activityAdjusted$AdjustedSteps, by=list(activityAdjusted$date), FUN="sum")
 names(stepsPerDayAdjusted) <- c("Date", "TotalSteps")
 ggplot(stepsPerDayAdjusted, aes(TotalSteps)) + 
@@ -186,6 +188,7 @@ activity$DayType <- sapply(activity$DayOfWeek,FUN=function(x){
 Now we can create two time series plots based upon the day type:
 
 ````{r}
+
 stepsPerDayType <- aggregate(activity$steps, by=list(activity$interval, activity$DayType), FUN=mean, na.rm=T)
 names(stepsPerDayType) <-c("Interval", "DayType", "Steps")
 #This gives us actual seconds not hour second units
@@ -202,6 +205,7 @@ ggplot(stepsPerDayType, aes(IntervalSeconds,Steps)) +
     ggtitle("Time series plot showing mean number of steps per 5 minute interval for weekdays and weekends") +
     xlab("Interval")
 
-
 `````
+
+That completes the analysis for this assessment.
 
